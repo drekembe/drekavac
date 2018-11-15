@@ -9,7 +9,9 @@ class RouterStore {
     this.rootStore = rootStore
   }
 
-  init = () => {}
+  init = () => {
+    return this
+  }
 
   setRoute = (location, match, history) => {
     this.location = location

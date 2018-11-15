@@ -31,6 +31,8 @@ const history = createBrowserHistory()
 const rootStore = new RootStore().init()
 const routerStore = rootStore.routerStore
 
+window.store = rootStore
+
 class App extends Component {
   render = () => (
     <Provider rootStore={rootStore}>
