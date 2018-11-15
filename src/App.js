@@ -1,28 +1,47 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { action, observable, decorate } from 'mobx'
+import { observer, Provider, inject } from 'mobx-react'
+import { createBrowserHistory } from 'history'
+import { Router, Route, Switch } from 'react-router-dom'
+import './App.scss'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+import RootStore from 'stores/RootStore'
+
+import Landing from 'components/Landing'
+import Event from 'components/Event'
+
+const withRouterStore = WrappedComponent => {
+  class WithRouterStore extends React.Component {
+    componentWillMount() {
+      this.props.setRoute(this.props.location, this.props.match, this.props.history)
+    }
+
+    render() {
+      return <WrappedComponent {...this.props} />
+    }
   }
+  return inject(({ rootStore }) => ({
+    setRoute: rootStore.routerStore.setRoute,
+  }))(WithRouterStore)
 }
 
-export default App;
+const SmartRoute = props => <Route {...props} component={withRouterStore(props.component)} />
+
+const history = createBrowserHistory()
+const rootStore = new RootStore().init()
+const routerStore = rootStore.routerStore
+
+class App extends Component {
+  render = () => (
+    <Provider rootStore={rootStore}>
+      <Router history={createBrowserHistory()}>
+        <Switch>
+          <SmartRoute path="/" exact component={Landing} />
+          <SmartRoute path="/:id" component={Event} />
+        </Switch>
+      </Router>
+    </Provider>
+  )
+}
+
+export default App
