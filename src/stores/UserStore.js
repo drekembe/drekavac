@@ -6,8 +6,10 @@ class UserStore {
   }
 
   /** Observables */
-  dci = window.localStorage.getItem('dci') || ''
-  name = window.localStorage.getItem('name') || ''
+  user = {
+    dci: window.localStorage.getItem('dci') || '',
+    name: window.localStorage.getItem('name') || '',
+  }
 
   /** Actions */
   init = () => {
@@ -15,19 +17,18 @@ class UserStore {
   }
 
   setName = name => {
-    this.name = name
+    this.user.name = name
     window.localStorage.setItem('name', name)
   }
 
   setDci = dci => {
-    this.dci = dci
+    this.user.dci = dci
     window.localStorage.setItem('dci', dci)
   }
 }
 
 decorate(UserStore, {
-  dci: observable,
-  name: observable,
+  user: observable,
   init: action,
   setName: action,
   setDci: action,

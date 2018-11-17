@@ -51,7 +51,89 @@ export const fetchEvent = slug =>
               },
             ],
           },
+          {
+            number: 2,
+            startTime: '2018-11-15T09:46:56.899Z',
+            endTime: '2018-11-15T09:46:56.899Z',
+            matches: [
+              {
+                table: 1,
+                person: {
+                  dci: '1030220331',
+                  firstName: 'Jozo',
+                  middleName: '',
+                  lastName: 'Jozic',
+                },
+                opponent: {
+                  dci: '1030220332',
+                  firstName: 'Bozo',
+                  middleName: '',
+                  lastName: 'Bozic',
+                },
+                outcome: 1,
+                win: 2,
+                loss: 1,
+                draw: 0,
+              },
+              {
+                table: 2,
+                person: {
+                  dci: '1030220333',
+                  firstName: 'Lozo',
+                  middleName: '',
+                  lastName: 'Lozic',
+                },
+                opponent: {
+                  dci: '1030220334',
+                  firstName: 'Hozo',
+                  middleName: '',
+                  lastName: 'Hozic',
+                },
+                outcome: 1,
+                win: 2,
+                loss: 1,
+                draw: 0,
+              },
+            ],
+          },
+          {
+            number: 3,
+            startTime: '2018-11-15T09:46:56.899Z',
+            endTime: '2018-11-15T09:46:56.899Z',
+            matches: [
+              {
+                table: 1,
+                person: {
+                  dci: '1030220331',
+                  firstName: 'Jozo',
+                  middleName: '',
+                  lastName: 'Jozic',
+                },
+                opponent: {
+                  dci: '1030220332',
+                  firstName: 'Bozo',
+                  middleName: '',
+                  lastName: 'Bozic',
+                },
+              },
+              {
+                table: 2,
+                person: {
+                  dci: '1030220333',
+                  firstName: 'Lozo',
+                  middleName: '',
+                  lastName: 'Lozic',
+                },
+                opponent: {
+                  dci: '1030220334',
+                  firstName: 'Hozo',
+                  middleName: '',
+                  lastName: 'Hozic',
+                },
+              },
+            ],
+          },
         ],
       })
-    }, 1500)
+    }, 200)
   })

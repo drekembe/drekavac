@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { action, observable, decorate } from 'mobx'
+import { action, configure, observable, decorate } from 'mobx'
 import { observer, Provider, inject } from 'mobx-react'
 import { createBrowserHistory } from 'history'
 import { Router, Route, Switch } from 'react-router-dom'
@@ -9,6 +9,8 @@ import RootStore from 'stores/RootStore'
 
 import Landing from 'components/Landing'
 import Event from 'components/Event'
+
+//configure({ enforceActions: 'observed' })
 
 const withRouterStore = WrappedComponent => {
   class WithRouterStore extends React.Component {
