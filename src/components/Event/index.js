@@ -1,41 +1,59 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
-import { observable, decorate } from 'mobx'
+import { observable, decorate, action, flow } from 'mobx'
 
 let Debug = observer(({ children }) => <pre>{JSON.stringify(children, null, 2)}</pre>)
 
-class MyMatch_ extends React.Component {
-  result = {}
+class MyMatch extends React.Component {
+  result = '00' // 00, 01, 10, 21, 12 etc
+  submitting = false
+  report = flow(function*(win, loss) {
+    this.submitting = true
+    yield this.props.reportResult(this.props.roundNumber, win, loss)
+    this.submitting = false
+    this.result = `${win}${loss}`
+  })
   render() {
-    const { match, reportResult } = this.props
+    const { match } = this.props
     return (
       <div>
         Table: {match.table}
         <br />
         Your opponent is: {match.opponent.firstName} {match.opponent.lastName}.
-        <Debug>{this.result}</Debug>
         <br />
-        <button onClick={() => reportResult(match.round, 2, 0)}>2-0</button>
-        <button onClick={() => reportResult(match.round, 2, 1)}>2-1</button>
-        <button onClick={() => reportResult(match.round, 1, 2)}>1-2</button>
-        <button onClick={() => reportResult(match.round, 0, 2)}>0-2</button>
+        {this.submitting && '...'}
+        <br />
+        <button disabled={this.submitting} onClick={() => this.report(2, 1)}>
+          {(this.result === '21' && '[2-1]') || '2-1'}
+        </button>
+        <button disabled={this.submitting} onClick={() => this.report(2, 0)}>
+          {(this.result === '20' && '[2-0]') || '2-0'}
+        </button>
+        <button disabled={this.submitting} onClick={() => this.report(1, 2)}>
+          {(this.result === '12' && '[1-2]') || '1-2'}
+        </button>
+        <button disabled={this.submitting} onClick={() => this.report(0, 2)}>
+          {(this.result === '02' && '[0-2]') || '0-2'}
+        </button>
       </div>
     )
   }
 }
 
-decorate(MyMatch_, {
+decorate(MyMatch, {
   result: observable,
+  submitting: observable,
+  report: action.bound,
 })
 
-const MyMatch = inject(({ rootStore }) => ({
+MyMatch = inject(({ rootStore }) => ({
   reportResult: rootStore.eventStore.reportResult,
-}))(observer(MyMatch_))
+}))(observer(MyMatch))
 
-let Match = observer(({ match }) =>
+let Match = observer(({ match, roundNumber }) =>
   !match.outcome ? (
-    <MyMatch match={match} />
+    <MyMatch match={match} roundNumber={roundNumber} />
   ) : (
     <div>
       Your opponent was: {match.opponent.firstName} {match.opponent.lastName}
@@ -45,10 +63,15 @@ let Match = observer(({ match }) =>
   )
 )
 let Matches = observer(({ matches }) => <Debug>{matches}</Debug>)
-let Round = observer(({ round }) => (
+
+const Round = observer(({ round }) => (
   <div>
     <h2>{round.number}</h2>
-    {round.match ? <Match match={round.match} /> : <Matches matches={round.matches} />}
+    {round.match ? (
+      <Match roundNumber={round.number} match={round.match} />
+    ) : (
+      <Matches matches={round.matches} />
+    )}
   </div>
 ))
 
@@ -58,6 +81,8 @@ let RoundList = observer(({ rounds }) =>
 
 class Event extends React.Component {
   componentDidMount() {
+    console.log('i mounted', this.props)
+    this.props.eventStore.setEventSlug(this.props.match.params.id)
     this.props.eventStore.fetchEvent(this.props.match.params.id)
   }
   render() {
@@ -70,16 +95,6 @@ class Event extends React.Component {
       <div>
         hello {userStore.user.name}! <Link to="/">link</Link>. {routerStore.location.pathname}
         <br />
-        <input
-          type="text"
-          value={userStore.user.name}
-          onChange={e => userStore.setName(e.target.value)}
-        />
-        <input
-          type="text"
-          value={userStore.user.dci}
-          onChange={e => userStore.setDci(e.target.value)}
-        />
         <div>
           {e.slug}
           <br />

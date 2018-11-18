@@ -137,3 +137,6 @@ export const fetchEvent = slug =>
       })
     }, 200)
   })
+
+export const reportResult = (id, name, dci, round, win, loss) =>
+  new Promise((resolve, reject) => setTimeout(() => resolve('ok'), 1500))

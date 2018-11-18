@@ -1,4 +1,4 @@
-import { observable, action, decorate, reaction } from 'mobx'
+import { observable, action, decorate } from 'mobx'
 
 class RouterStore {
   location = {}
