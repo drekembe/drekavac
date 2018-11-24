@@ -1,7 +1,6 @@
 @import '_variables.sass';
 
 .wrapper {
-  background-color: $grey-darker;
   box-sizing: border-box;
   height: 3rem;
   position: fixed;
@@ -20,11 +19,40 @@
       display: flex;
       width: 100%;
       height: 100%;
-      color: $grey-light;
       align-items: center;
       justify-content: center;
-      &.active {
-        color: dodgerblue;
+    }
+  }
+  &.dark {
+    background-color: $grey-darker;
+    > div {
+      a {
+        color: $grey-light;
+        &.active {
+          color: dodgerblue;
+        }
+      }
+    }
+  }
+  &.light {
+    background-color: #eee;
+    > div {
+      a {
+        color: $grey-light;
+        &.active {
+          color: dodgerblue;
+        }
+      }
+    }
+  }
+  &.aqua {
+    background-color: red;
+    > div {
+      a {
+        color: green;
+        &.active {
+          color: dodgerblue;
+        }
       }
     }
   }

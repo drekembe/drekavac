@@ -31,56 +31,31 @@ const RoutesContainer = posed.div({
     },
   },
 })
-
 //configure({ enforceActions: 'observed' })
-
-const withRouterStore = WrappedComponent => {
-  class WithRouterStore extends React.Component {
-    componentWillMount() {
-      console.log('setting route to', this.props.location.pathname)
-      this.props.setRoute(this.props.location, this.props.match, this.props.history)
-    }
-
-    render() {
-      return <WrappedComponent {...this.props} />
-    }
-  }
-  return inject(({ rootStore }) => ({
-    setRoute: rootStore.routerStore.setRoute,
-  }))(WithRouterStore)
-}
-
 const rootStore = new RootStore().init()
-
-const history = createBrowserHistory()
 
 window.store = rootStore
 
 class App extends Component {
   render = () => (
-    <Provider rootStore={rootStore}>
-      <Router history={history}>
+    <Provider rootStore={new RootStore().init()}>
+      <Router history={createBrowserHistory()}>
         <ScrollToTop>
-          <Layout>
-            <Route
-              render={({ location }) => (
+          <Route
+            render={({ location }) => (
+              <Layout>
                 <PoseGroup>
                   <RoutesContainer key={location.key || location.pathname}>
                     <Switch location={location}>
-                      <Route path="/" exact component={withRouterStore(Home)} key="home" />
-                      <Route
-                        path="/settings"
-                        exact
-                        component={withRouterStore(Settings)}
-                        key="settings"
-                      />
-                      <Route path="/:id" component={withRouterStore(Event)} key="event" />
+                      <Route path="/" exact component={Home} key="home" />
+                      <Route path="/settings" exact component={Settings} key="settings" />
+                      <Route path="/:id" component={Event} key="event" />
                     </Switch>
                   </RoutesContainer>
                 </PoseGroup>
-              )}
-            />
-          </Layout>
+              </Layout>
+            )}
+          />
         </ScrollToTop>
       </Router>
     </Provider>

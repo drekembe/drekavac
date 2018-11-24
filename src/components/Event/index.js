@@ -82,14 +82,14 @@ class Event extends React.Component {
     this.props.eventStore.fetchEvent(this.props.match.params.id)
   }
   render() {
-    const { routerStore, userStore, eventStore } = this.props
+    const { userStore, eventStore } = this.props
     const e = eventStore.pEvent
     if (eventStore.status === 'LOADING') {
       return <div>Loading...</div>
     }
     return (
       <div>
-        hello {userStore.user.name}! <Link to="/">link</Link>. {routerStore.location.pathname}
+        hello {userStore.user.name}! <Link to="/">link</Link>.
         <br />
         <div>
           {e.slug}
@@ -104,7 +104,6 @@ class Event extends React.Component {
 }
 
 export default inject(({ rootStore }) => ({
-  routerStore: rootStore.routerStore,
   userStore: rootStore.userStore,
   eventStore: rootStore.eventStore,
 }))(observer(Event))

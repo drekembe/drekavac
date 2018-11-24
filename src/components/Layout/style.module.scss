@@ -1,12 +1,34 @@
 @import '_variables.sass';
-
+@mixin placeholder {
+  input::-webkit-input-placeholder {
+    @content;
+  }
+  input:-moz-placeholder {
+    @content;
+  }
+  input::-moz-placeholder {
+    @content;
+  }
+  input:-ms-input-placeholder {
+    @content;
+  }
+}
 .wrapper {
   min-height: 100vh;
   box-sizing: border-box;
   transition: all 0.2s ease-out;
+  padding-bottom: 3rem;
   &.dark {
     color: white;
     background-color: hsl(0, 0%, 14%);
+    @include placeholder {
+      color: hsl(0, 0%, 30%);
+    }
+    input[type='text'] {
+      color: white;
+      background-color: #333;
+      border: 1px solid #555;
+    }
   }
 
   &.light {
@@ -16,11 +38,10 @@
 
   &.aqua {
     color: white;
-    background-color: darkgreen;
+    background-color: lightseagreen;
   }
 }
 
 .container {
   padding-bottom: 3rem;
 }
-

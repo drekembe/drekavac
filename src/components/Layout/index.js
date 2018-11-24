@@ -20,9 +20,7 @@ function Layout({ children, colorScheme, routerStore }) {
 
 //export default Layout
 
-export default withRouter(
-  inject(({ rootStore: { userStore, routerStore } }) => ({
-    colorScheme: userStore.colorScheme,
-    routerStore: routerStore,
-  }))(observer(Layout))
-)
+export default inject(({ rootStore: { userStore, routerStore } }) => ({
+  colorScheme: userStore.colorScheme,
+  routerStore: routerStore,
+}))(observer(Layout))
