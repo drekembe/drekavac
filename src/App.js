@@ -13,6 +13,7 @@ import Event from 'components/Event'
 import Settings from 'components/Settings'
 
 import posed, { PoseGroup } from 'react-pose'
+import style from './App.module.scss'
 
 const RoutesContainer = posed.div({
   enter: {
@@ -36,6 +37,7 @@ const RoutesContainer = posed.div({
 const withRouterStore = WrappedComponent => {
   class WithRouterStore extends React.Component {
     componentWillMount() {
+      console.log('setting route to', this.props.location.pathname)
       this.props.setRoute(this.props.location, this.props.match, this.props.history)
     }
 

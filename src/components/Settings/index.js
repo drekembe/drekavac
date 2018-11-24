@@ -23,6 +23,18 @@ class Settings extends React.Component {
             onChange={e => userStore.setDci(e.target.value)}
           />
         </div>
+        <div>
+          color scheme
+          <select
+            value={userStore.colorScheme}
+            onChange={({ target }) => userStore.setColorScheme(target.value)}>
+            {userStore.constructor.colorSchemes.map(scheme => (
+              <option value={scheme.value} key={scheme.value}>
+                {scheme.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
     )
   }

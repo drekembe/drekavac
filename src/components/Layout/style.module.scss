@@ -3,8 +3,24 @@
 .wrapper {
   min-height: 100vh;
   box-sizing: border-box;
+  transition: all 0.2s ease-out;
+  &.dark {
+    color: white;
+    background-color: hsl(0, 0%, 14%);
+  }
+
+  &.light {
+    color: black;
+    background-color: white;
+  }
+
+  &.aqua {
+    color: white;
+    background-color: darkgreen;
+  }
 }
 
 .container {
   padding-bottom: 3rem;
 }
+

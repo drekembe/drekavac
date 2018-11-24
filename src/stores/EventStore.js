@@ -21,8 +21,10 @@ class EventStore {
     this.status = 'READY'
   })
 
+  reportingResult = false
   reportResult = flow(function*(round, win, loss) {
-    return yield api.reportResult(
+    this.reportingResult = true
+    const res = yield api.reportResult(
       this.currentEvent.id,
       this.rootStore.userStore.user.name,
       this.rootStore.userStore.user.dci,
@@ -30,6 +32,8 @@ class EventStore {
       win,
       loss
     )
+    this.reportingResult = false
+    return res
   })
 
   setEventSlug = slug => {
@@ -73,6 +77,7 @@ decorate(EventStore, {
   eventSlug: observable,
   currentEvent: observable,
   results: observable,
+  reportingResult: observable,
   init: action.bound,
   fetchEvent: action.bound,
   addResult: action.bound,

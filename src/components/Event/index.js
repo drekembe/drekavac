@@ -7,33 +7,31 @@ let Debug = observer(({ children }) => <pre>{JSON.stringify(children, null, 2)}<
 
 class MyMatch extends React.Component {
   result = '00' // 00, 01, 10, 21, 12 etc
-  submitting = false
   report = flow(function*(win, loss) {
-    this.submitting = true
-    yield this.props.reportResult(this.props.roundNumber, win, loss)
-    this.submitting = false
+    yield this.props.eventStore.reportResult(this.props.roundNumber, win, loss)
     this.result = `${win}${loss}`
   })
   render() {
     const { match } = this.props
+    const { reportingResult, reportResult } = this.props.eventStore
     return (
       <div>
         Table: {match.table}
         <br />
         Your opponent is: {match.opponent.firstName} {match.opponent.lastName}.
         <br />
-        {this.submitting && '...'}
+        {reportingResult && '...'}
         <br />
-        <button disabled={this.submitting} onClick={() => this.report(2, 1)}>
+        <button disabled={reportingResult} onClick={() => this.report(2, 1)}>
           {(this.result === '21' && '[2-1]') || '2-1'}
         </button>
-        <button disabled={this.submitting} onClick={() => this.report(2, 0)}>
+        <button disabled={reportingResult} onClick={() => this.report(2, 0)}>
           {(this.result === '20' && '[2-0]') || '2-0'}
         </button>
-        <button disabled={this.submitting} onClick={() => this.report(1, 2)}>
+        <button disabled={reportingResult} onClick={() => this.report(1, 2)}>
           {(this.result === '12' && '[1-2]') || '1-2'}
         </button>
-        <button disabled={this.submitting} onClick={() => this.report(0, 2)}>
+        <button disabled={reportingResult} onClick={() => this.report(0, 2)}>
           {(this.result === '02' && '[0-2]') || '0-2'}
         </button>
       </div>
@@ -43,12 +41,11 @@ class MyMatch extends React.Component {
 
 decorate(MyMatch, {
   result: observable,
-  submitting: observable,
   report: action.bound,
 })
 
-MyMatch = inject(({ rootStore }) => ({
-  reportResult: rootStore.eventStore.reportResult,
+MyMatch = inject(({ rootStore: { eventStore } }) => ({
+  eventStore,
 }))(observer(MyMatch))
 
 let Match = observer(({ match, roundNumber }) =>
@@ -81,7 +78,6 @@ let RoundList = observer(({ rounds }) =>
 
 class Event extends React.Component {
   componentDidMount() {
-    console.log('i mounted', this.props)
     this.props.eventStore.setEventSlug(this.props.match.params.id)
     this.props.eventStore.fetchEvent(this.props.match.params.id)
   }
