@@ -15,6 +15,7 @@ class RouterStore {
   setRoute = (location, history) => {
     this.location = location
     this.history = history
+    window.scrollTo(0, 0)
   }
 }
 

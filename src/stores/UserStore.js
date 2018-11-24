@@ -46,6 +46,7 @@ decorate(UserStore, {
   init: action,
   setName: action,
   setDci: action,
+  setColorScheme: action,
 })
 
 export default UserStore

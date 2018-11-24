@@ -14,10 +14,10 @@
   }
 }
 .wrapper {
-  min-height: 100vh;
   box-sizing: border-box;
   transition: all 0.2s ease-out;
-  padding-bottom: 3rem;
+  padding-top: 0;
+  padding-bottom: 0;
   &.dark {
     color: white;
     background-color: hsl(0, 0%, 14%);
@@ -43,5 +43,9 @@
 }
 
 .container {
-  padding-bottom: 3rem;
+  padding-top: $vertical-padding;
+  padding-bottom: calc(#{$vertical-padding} + #{$menu-height});
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

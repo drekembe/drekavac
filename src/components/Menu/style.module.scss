@@ -2,7 +2,7 @@
 
 .wrapper {
   box-sizing: border-box;
-  height: 3rem;
+  height: $menu-height;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -21,6 +21,7 @@
       height: 100%;
       align-items: center;
       justify-content: center;
+      transition: all 0.2s ease-out;
     }
   }
   &.dark {

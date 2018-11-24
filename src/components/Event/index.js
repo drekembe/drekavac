@@ -13,7 +13,7 @@ class MyMatch extends React.Component {
   })
   render() {
     const { match } = this.props
-    const { reportingResult, reportResult } = this.props.eventStore
+    const { reportingResult } = this.props.eventStore
     return (
       <div>
         Table: {match.table}
