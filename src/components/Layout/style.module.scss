@@ -24,10 +24,14 @@
     @include placeholder {
       color: hsl(0, 0%, 30%);
     }
-    input[type='text'] {
+    input[type='text'],
+    select {
       color: white;
       background-color: #333;
       border: 1px solid #555;
+    }
+    label {
+      color: hsl(0, 0%, 50%);
     }
   }
 

@@ -5,7 +5,7 @@ class UserStore {
     this.rootStore = rootStore
   }
 
-  static colorSchemes = [
+  static themes = [
     { value: 'dark', label: 'Dark' },
     { value: 'light', label: 'Light' },
     { value: 'aqua', label: 'Aqua' },
@@ -17,7 +17,7 @@ class UserStore {
     name: window.localStorage.getItem('name') || '',
   }
 
-  colorScheme = window.localStorage.getItem('colorScheme') || 'dark'
+  theme = window.localStorage.getItem('theme') || 'dark'
 
   /** Actions */
   init = () => {
@@ -34,19 +34,19 @@ class UserStore {
     window.localStorage.setItem('dci', dci)
   }
 
-  setColorScheme = colorScheme => {
-    this.colorScheme = colorScheme
-    window.localStorage.setItem('colorScheme', colorScheme)
+  setTheme = theme => {
+    this.theme = theme
+    window.localStorage.setItem('theme', theme)
   }
 }
 
 decorate(UserStore, {
   user: observable,
-  colorScheme: observable,
+  theme: observable,
   init: action,
   setName: action,
   setDci: action,
-  setColorScheme: action,
+  setTheme: action,
 })
 
 export default UserStore

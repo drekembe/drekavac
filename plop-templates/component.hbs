@@ -1,0 +1,24 @@
+import React from 'react'
+import classnames from 'classnames'
+import style from './style.module.scss'
+{{#if stores.length}}
+import { inject, observer } from 'mobx-react'
+{{else}}
+import { observer } from 'mobx-react'
+{{/if}}
+
+class {{name}} extends React.Component {
+  render() {
+    return <div className={classnames(style.wrapper)}>Hello world!</div>
+  }
+}
+
+{{#if stores.length}}
+export default inject(({ rootStore: { {{#each stores as |store|}}{{store}}, {{/each}} } }) => ({
+{{#each stores as |store|}}
+  {{store}},
+{{/each}}
+}))(observer({{name}}))
+{{else}}
+export default observer({{name}})
+{{/if}}

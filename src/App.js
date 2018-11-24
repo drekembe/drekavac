@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { configure } from 'mobx'
 import { Provider } from 'mobx-react'
 import { createBrowserHistory } from 'history'
@@ -17,8 +17,8 @@ const rootStore = new RootStore().init()
 
 window.store = rootStore
 
-class App extends Component {
-  render = () => (
+export default function App() {
+  return (
     <Provider rootStore={rootStore}>
       <Router history={createBrowserHistory()}>
         <RouteReporter store={rootStore.routerStore}>
@@ -34,5 +34,3 @@ class App extends Component {
     </Provider>
   )
 }
-
-export default App

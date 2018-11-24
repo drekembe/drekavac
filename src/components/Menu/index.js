@@ -22,7 +22,7 @@ const PNavLink = posed.div({
 function Menu({ children, eventStore, userStore }) {
   const displayEventLink = eventStore.eventSlug !== ''
   return (
-    <div className={classnames(style.wrapper, style[userStore.colorScheme])}>
+    <div className={classnames(style.wrapper, style[userStore.theme])}>
       <PoseGroup>
         <PNavLink key="1">
           <NavLink exact to="/" activeClassName={style.active}>

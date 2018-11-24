@@ -59,6 +59,7 @@ class EventStore {
         return {
           ...round,
           match: {
+            ...match,
             person: match.opponent,
             opponent: match.person,
             win: match.loss,

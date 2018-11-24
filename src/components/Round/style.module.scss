@@ -1,0 +1,33 @@
+@import '_variables.sass';
+
+.wrapper {
+  margin-bottom: 2rem;
+  .heading {
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    font-family: monospace;
+    font-weight: 600;
+    margin: 0 !important;
+  }
+  &.dark {
+    background-color: hsl(0, 0%, 16%);
+    .heading {
+      background-color: hsl(0, 0%, 20%);
+      color: $info;
+    }
+  }
+  &.light {
+    background-color: hsl(0, 0, 96%);
+    .heading {
+      background-color: hsl(0, 0, 93%);
+      color: $info;
+    }
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.matchContainer {
+  padding: 1rem;
+}

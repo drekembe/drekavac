@@ -1,0 +1,39 @@
+@import '_variables.sass';
+
+.wrapper {
+  &.dark {
+    .table {
+      color: $grey-light;
+    }
+  }
+}
+
+.reportButton {
+  margin-top: 1rem;
+}
+
+.pastMatch {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .result {
+  }
+  .win {
+    color: $success;
+  }
+  .loss {
+    color: $danger;
+  }
+}
+
+.resultReporter {
+  position: fixed;
+  z-index: 501;
+  top: 0;
+  right: 0;
+  bottom: $menu-height;
+  left: 0;
+  background-color: red;
+  background-color: hsl(0, 0%, 14%);
+  padding: $vertical-padding 1rem $vertical-padding 1rem;
+}

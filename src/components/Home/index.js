@@ -31,7 +31,7 @@ class Home extends React.Component {
               />
             </Control>
           </Field>
-          <Button fullwidth={true} type="submit" className="is-large" color="primary">
+          <Button fullwidth={true} type="submit" className="is-large" color="info">
             Go!
           </Button>
         </form>

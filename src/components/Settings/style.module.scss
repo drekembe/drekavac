@@ -1,0 +1,7 @@
+@import '_variables.sass';
+.wrapper {
+  display: flex;
+  flex: 1 0 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+}

@@ -9,9 +9,9 @@ import { withRouter } from 'react-router-dom'
 
 import style from './style.module.scss'
 
-function Layout({ children, colorScheme, routerStore }) {
+function Layout({ children, userStore, routerStore }) {
   return (
-    <Section className={classnames(style.wrapper, style[colorScheme])}>
+    <Section className={classnames(style.wrapper, style[userStore.theme])}>
       <Container className={style.container}>{children}</Container>
       <Menu />
     </Section>
@@ -22,7 +22,7 @@ function Layout({ children, colorScheme, routerStore }) {
 
 export default withRouter(
   inject(({ rootStore: { userStore, routerStore } }) => ({
-    colorScheme: userStore.colorScheme,
-    routerStore: routerStore,
+    userStore,
+    routerStore,
   }))(observer(Layout))
 )
