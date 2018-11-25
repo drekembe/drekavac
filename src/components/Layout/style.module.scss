@@ -18,6 +18,12 @@
   transition: all 0.2s ease-out;
   padding-top: 0;
   padding-bottom: 0;
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  bottom: $menu-height;
+  left: 0;
+  right: 0;
   &.dark {
     color: white;
     background-color: hsl(0, 0%, 14%);
@@ -48,8 +54,8 @@
 
 .container {
   padding-top: $vertical-padding;
-  padding-bottom: calc(#{$vertical-padding} + #{$menu-height});
-  min-height: 100vh;
+  padding-bottom: $vertical-padding;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
 }

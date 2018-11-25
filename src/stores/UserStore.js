@@ -8,7 +8,7 @@ class UserStore {
   static themes = [
     { value: 'dark', label: 'Dark' },
     { value: 'light', label: 'Light' },
-    { value: 'aqua', label: 'Aqua' },
+    { value: 'aqua', label: 'Ugly' },
   ]
 
   /** Observables */

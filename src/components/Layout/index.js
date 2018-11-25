@@ -1,11 +1,13 @@
 import React from 'react'
-import Section from 'react-bulma-components/lib/components/section'
-import Container from 'react-bulma-components/lib/components/container'
 import classnames from 'classnames'
 
-import Menu from 'components/Menu'
 import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
+
+import Section from 'react-bulma-components/lib/components/section'
+import Container from 'react-bulma-components/lib/components/container'
+
+import Menu from 'components/Menu'
 
 import style from './style.module.scss'
 

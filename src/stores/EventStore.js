@@ -53,6 +53,7 @@ class EventStore {
       if (!match) {
         return round
       }
+      match.finished = match.outcome === 1
       if (isUser(match.person)) {
         return { ...round, match }
       } else {
