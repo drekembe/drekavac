@@ -19,9 +19,6 @@ const Match = observer(({ match, win, loss }) => {
     <div className={style.wrapper}>
       <div>
         {match.opponent.firstName} {match.opponent.lastName}
-        {!match.finished && match.table && (
-          <span className={style.table}> @ table {match.table}</span>
-        )}
       </div>
       <Result win={match.win || win} loss={match.loss || loss} />
     </div>

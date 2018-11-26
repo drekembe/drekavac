@@ -36,10 +36,12 @@ class Round extends React.Component {
     )
     const alreadyReported = this.win !== null || this.loss !== null
     const reportButtonText = !alreadyReported ? 'Report result' : 'Change result'
+    const displayTable = round.match && !round.match.finished && round.match.table
     return (
       <div className={classnames(style.wrapper, style[userStore.theme])}>
         <Heading size={5} className={style.heading}>
           Round {round.number}
+          {displayTable && <span> table {round.match.table}</span>}
         </Heading>
         <div className={style.matchWrapper}>{match}</div>
         {round.match && !round.match.finished && (
