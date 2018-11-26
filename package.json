@@ -2,6 +2,7 @@
   "name": "drekavac",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://drekembe.github.io/drekavac/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
@@ -21,7 +22,6 @@
     "react-scripts": "2.1.1",
     "uuid": "^3.3.2"
   },
-  "homepage": "https://drekembe.github.io/drekavac",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -20,7 +20,7 @@ window.store = rootStore
 export default function App() {
   return (
     <Provider rootStore={rootStore}>
-      <Router history={createBrowserHistory()}>
+      <Router history={createBrowserHistory({ basename: process.env.PUBLIC_URL })}>
         <RouterStoreConnector store={rootStore.routerStore}>
           <Layout>
             <Switch>
