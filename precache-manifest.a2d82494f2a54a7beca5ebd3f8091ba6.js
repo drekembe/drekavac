@@ -8,23 +8,23 @@ self.__precacheManifest = [
     "url": "/drekavac/static/js/runtime~main.c9337235.js"
   },
   {
-    "revision": "e49e3a7fc9f74bdf5515",
-    "url": "/drekavac/static/js/main.e49e3a7f.chunk.js"
+    "revision": "e4b5fc4bff843e89f8ef",
+    "url": "/drekavac/static/js/main.e4b5fc4b.chunk.js"
   },
   {
-    "revision": "daf15d7b6508eaf3997b",
-    "url": "/drekavac/static/js/1.daf15d7b.chunk.js"
+    "revision": "6bc5d5116a8b5fc65518",
+    "url": "/drekavac/static/js/1.6bc5d511.chunk.js"
   },
   {
-    "revision": "e49e3a7fc9f74bdf5515",
-    "url": "/drekavac/static/css/main.ba48954d.chunk.css"
+    "revision": "e4b5fc4bff843e89f8ef",
+    "url": "/drekavac/static/css/main.fdc513c4.chunk.css"
   },
   {
-    "revision": "daf15d7b6508eaf3997b",
+    "revision": "6bc5d5116a8b5fc65518",
     "url": "/drekavac/static/css/1.57c3b846.chunk.css"
   },
   {
-    "revision": "070f7f7f4fb26717ae152db8467516bb",
+    "revision": "1876a8babc3b44a89838b24f9adde380",
     "url": "/drekavac/index.html"
   }
 ];
