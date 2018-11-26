@@ -7,6 +7,9 @@
     text-transform: uppercase;
     font-weight: 400;
     margin: 0 !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   &.dark {
     background-color: $dark-2;
@@ -36,4 +39,3 @@
 .matchWrapper {
   padding: 1rem;
 }
-
