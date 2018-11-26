@@ -1,5 +1,29 @@
 @import '_variables.sass';
 
 .wrapper {
-  
+  .match {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: $vertical-padding/2;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    padding-bottom: $vertical-padding/2;
+    border-bottom: 1px solid $dark-4;
+  }
+  .table {
+    flex: 0 1 auto;
+    display: flex;
+    padding-right: $vertical-padding/2;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.5rem;
+    color: $grey-light;
+  }
+  .vs {
+    flex: 5 5 auto;
+  }
+  .result {
+    flex: 2 2 auto;
+  }
 }

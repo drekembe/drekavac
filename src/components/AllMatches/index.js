@@ -8,9 +8,20 @@ class AllMatches extends React.Component {
     return (
       <div className={classnames(style.wrapper)}>
         {this.props.matches.map(match => (
-          <div>
-            {match.person.firstName} {match.person.lastName} vs. {match.opponent.firstName}{' '}
-            {match.opponent.lastName}
+          <div className={style.match} key={`${match.person.dci}`}>
+            {match.table && <div className={style.table}>{match.table}</div>}
+            <div className={style.vs}>
+              <div>
+                {match.person.firstName} {match.person.lastName}
+              </div>
+              <div>
+                {match.opponent.firstName} {match.opponent.lastName}
+              </div>
+            </div>
+            <div className={style.scores}>
+              <div>{match.win}</div>
+              <div>{match.loss}</div>
+            </div>
           </div>
         ))}
       </div>
