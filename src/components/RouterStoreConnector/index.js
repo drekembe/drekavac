@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 
-class RouteReporter extends React.Component {
+class RouterStoreConnector extends React.Component {
   componentDidMount() {
     this.props.store.setRoute(this.props.location, this.props.history)
   }
@@ -15,4 +15,4 @@ class RouteReporter extends React.Component {
   }
 }
 
-export default withRouter(RouteReporter)
+export default withRouter(RouterStoreConnector)

@@ -2,6 +2,7 @@ import React from 'react'
 import { inject, observer } from 'mobx-react'
 
 import Round from 'components/Round'
+import Loading from 'components/Loading'
 
 import style from './style.module.scss'
 
@@ -18,7 +19,7 @@ class Event extends React.Component {
     const { eventStore } = this.props
     const e = eventStore.pEvent
     if (eventStore.status === 'LOADING') {
-      return <div>Loading...</div>
+      return <Loading fullscreen={true} />
     }
     return (
       <div className={style.wrapper}>

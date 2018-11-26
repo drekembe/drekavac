@@ -6,7 +6,7 @@ import { Router, Route, Switch } from 'react-router-dom'
 
 import RootStore from 'stores/RootStore'
 
-import RouteReporter from 'components/RouteReporter'
+import RouterStoreConnector from 'components/RouterStoreConnector'
 import Layout from 'components/Layout'
 import Home from 'components/Home'
 import Event from 'components/Event'
@@ -21,7 +21,7 @@ export default function App() {
   return (
     <Provider rootStore={rootStore}>
       <Router history={createBrowserHistory()}>
-        <RouteReporter store={rootStore.routerStore}>
+        <RouterStoreConnector store={rootStore.routerStore}>
           <Layout>
             <Switch>
               <Route path="/" exact component={Home} key="home" />
@@ -29,7 +29,7 @@ export default function App() {
               <Route path="/:id" component={Event} key="event" />
             </Switch>
           </Layout>
-        </RouteReporter>
+        </RouterStoreConnector>
       </Router>
     </Provider>
   )

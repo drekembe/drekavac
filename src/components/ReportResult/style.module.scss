@@ -1,29 +1,90 @@
 @import '_variables.sass';
 
 .wrapper {
-}
-.resultReporter {
   position: fixed;
   z-index: 501;
   top: 0;
   right: 0;
   bottom: $menu-height;
   left: 0;
-  background-color: red;
-  background-color: hsl(0, 0%, 14%);
   padding: $vertical-padding;
   display: flex;
   flex-direction: column;
+  &.dark {
+    background-color: hsl(0, 0%, 14%);
+    .winsPicker {
+      h1 {
+        color: $grey-light;
+      }
+      button {
+        background-color: $dark-3;
+        color: $grey-light;
+        border: 0;
+        &.chosen {
+          background-color: $info;
+          color: white;
+        }
+      }
+    }
+  }
+  &.light {
+    background-color: white;
+    .winsPicker {
+      button {
+        background-color: $grey-light;
+        &.chosen {
+          background-color: $info;
+          color: white;
+        }
+      }
+    }
+  }
+  justify-content: center;
 }
 
-.closeContainer {
+.winButtons {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  flex: 1 0 auto;
+  justify-content: space-between;
+  button {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc((100% - 2 *#{$vertical-padding}) / 3);
+  }
+}
+
+.winsPicker {
+  margin-bottom: $vertical-padding;
+  h1 {
+    text-align: center;
+  }
+}
+
+.closeIcon {
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(#{$vertical-padding}* 2);
+  width: calc(#{$vertical-padding}* 2);
+}
+.dark {
   .closeIcon {
-    padding: 1rem;
-    cursor: pointer;
+    color: $grey-light;
+    &:hover {
+      color: $grey;
+    }
+  }
+}
+.light {
+  .closeIcon {
+    color: $info;
+    &:hover {
+      color: darken($info, 20%);
+    }
   }
 }
 

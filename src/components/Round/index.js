@@ -34,8 +34,7 @@ class Round extends React.Component {
     ) : (
       <AllMatches matches={round.matches} />
     )
-    const reportButtonText =
-      this.win === 0 && this.loss === 0 ? 'Report result' : 'Change result report'
+    const reportButtonText = this.win === 0 && this.loss === 0 ? 'Report result' : 'Change result'
     return (
       <div className={classnames(style.wrapper, style[userStore.theme])}>
         <Heading size={5} className={style.heading}>

@@ -1,0 +1,25 @@
+@import '_variables.sass';
+
+.wrapper {
+  svg {
+    stroke: $info;
+  }
+  &.dark {
+    background-color: $dark-1;
+  }
+  &.light {
+    background-color: white;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &.fullscreen {
+    position: fixed;
+    z-index: 502;
+    top: 0;
+    left: 0;
+    bottom: $menu-height;
+    right: 0;
+  }
+}
