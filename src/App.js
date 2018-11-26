@@ -1,7 +1,7 @@
 import React from 'react'
 import { configure } from 'mobx'
 import { Provider } from 'mobx-react'
-import { createBrowserHistory } from 'history'
+import { createHashHistory } from 'history'
 import { Router, Route, Switch } from 'react-router-dom'
 
 import RootStore from 'stores/RootStore'
@@ -20,7 +20,7 @@ window.store = rootStore
 export default function App() {
   return (
     <Provider rootStore={rootStore}>
-      <Router history={createBrowserHistory({ basename: process.env.PUBLIC_URL })}>
+      <Router history={createHashHistory()}>
         <RouterStoreConnector store={rootStore.routerStore}>
           <Layout>
             <Switch>
