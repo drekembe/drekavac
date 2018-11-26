@@ -12,8 +12,8 @@ import AllMatches from 'components/AllMatches'
 import ReportResult from 'components/ReportResult'
 
 class Round extends React.Component {
-  win = 0
-  loss = 0
+  win = null
+  loss = null
   resultReporterOpen = false
   openResultReporter = () => {
     this.resultReporterOpen = true
@@ -30,11 +30,12 @@ class Round extends React.Component {
   render() {
     const { round, userStore } = this.props
     const match = round.match ? (
-      <MyMatch match={round.match} win={this.win} loss={this.loss} />
+      <MyMatch match={round.match} win={this.win || 0} loss={this.loss || 0} />
     ) : (
       <AllMatches matches={round.matches} />
     )
-    const reportButtonText = this.win === 0 && this.loss === 0 ? 'Report result' : 'Change result'
+    const reportButtonText =
+      this.win === null && this.loss === null ? 'Report result' : 'Change result'
     return (
       <div className={classnames(style.wrapper, style[userStore.theme])}>
         <Heading size={5} className={style.heading}>
@@ -51,7 +52,12 @@ class Round extends React.Component {
           </Button>
         )}
         {this.resultReporterOpen && (
-          <ReportResult onClose={this.closeResultReporter} reportResult={this.reportResult} />
+          <ReportResult
+            onClose={this.closeResultReporter}
+            reportResult={this.reportResult}
+            initialWin={this.win}
+            initialLoss={this.loss}
+          />
         )}
       </div>
     )

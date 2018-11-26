@@ -38,8 +38,8 @@ const WinsPicker = ({ chosen, chooseNumber, title }) => (
 )
 
 class ReportResult extends React.Component {
-  win = null
-  loss = null
+  win = this.props.initialWin
+  loss = this.props.initialLoss
   setWin = n => {
     this.win = n
   }
